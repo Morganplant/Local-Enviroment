@@ -1,0 +1,14 @@
+[pep8]
+
+exclude=.virtualenv,perf-tools
+
+# Ignoring various rules:
+# - E402 module level import not at top of file
+# - E124 closing bracket does not match visual indentation (conflicts with recent pylint, and looks wrong)
+# - E126 continuation line over-indented for hanging indent (since pylint also does this and is better at handling
+#        exceptions)
+# - E241 multiple spaces after ',' (since pylint also does this and is better at handling exceptions)
+# - E266 too many leading '#' for block comment
+# - W503 line break before binary operator (since W504 line break after binary operator is now the recommended approach)
+# - E722 do not use bare 'except' (since pylint does this better)
+ignore = E402,E124,E126,E241,E266,W503,E722
