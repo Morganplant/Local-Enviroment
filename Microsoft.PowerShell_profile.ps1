@@ -75,5 +75,7 @@ oh-my-posh --init --shell pwsh --config $profile\oh-my-posh\prompt.json | Invoke
 
 pip-installs
 Import-Module -Name Terminal-Icons
+Import-Module 'C:\tools\poshgit\dahlbyk-posh-git-9bda399\src\posh-git.psd1'
 clear
 ###==================================================================================================================###
+
