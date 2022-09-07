@@ -69,6 +69,7 @@ Set-PSReadLineOption -PredictionSource History
 
 ###=============================================<-> Setup Enviroment <->=============================================###
 $profile = "$home\Documents\WindowsPowerShell\"
+$performance = "$home\performance"
 Get-Changes 2>&1 /dev/null
 
 oh-my-posh --init --shell pwsh --config $profile\oh-my-posh\prompt.json | Invoke-Expression
