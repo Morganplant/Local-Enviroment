@@ -6,6 +6,125 @@
       "segments": [
         {
           "background": "#242424",
+          "foreground": "#008000",
+          "leading_diamond": "<transparent,background>\ue0b0</>",
+          "style": "diamond",
+          "template": "{{ if .Env.VIRTUAL_ENV_MTP_PROMPT }} \ue73c {{ .Env.VIRTUAL_ENV_MTP_PROMPT }} {{ end }}",
+          "trailing_diamond": "\ue0b0",
+          "type": "time"
+        }
+        // {
+        //   "type": "wifi",
+        //   "leading_diamond": "<transparent,background>\ue0b0</>",
+        //   "style": "diamond",
+        //   "trailing_diamond": "\ue0b0",
+        //   "background": "#242424",
+        //   "foreground": "#8822ee",
+        //   "foreground_templates": [
+        //     "{{ if (lt .Signal 60) }}#DDDD11{{ else if (lt .Signal 90) }}#DD6611{{ else }}#11CC11{{ end }}"
+        //   ],
+        //   "powerline_symbol": "\uE0B0",
+        //   "template": " \ufaa8 {{ .Signal }}% "
+        // }
+        // {
+        //   "type": "battery",
+        //   "style": "diamond",
+        //   "leading_diamond": "<transparent,background>\ue0b0</>",
+        //   "trailing_diamond": "\ue0b0",
+        //   "powerline_symbol": "\uE0B0",
+        //   "foreground": "#11CC11",
+        //   "background": "#242424",
+        //   "foreground_templates": [
+        //     "{{if eq \"Charging\" .State.String}}#40c4ff{{end}}",
+        //     "{{if eq \"Discharging\" .State.String}}#ff5722{{end}}",
+        //     "{{if eq \"Full\" .State.String}}#4caf50{{end}}"
+        //   ],
+        //   "template": " {{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }} ",
+        //   "properties": {
+        //     "discharging_icon": "󱊡 ",
+        //     "charging_icon": "󰂄 ",
+        //     "charged_icon": "󱊣 "
+        //   }
+        // }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "background": "#242424",
+          "foreground": "#33DD2D",
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#f77622{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#e43b44{{ end }}",
+            "{{ if gt .Ahead 0 }}#2ce8f5{{ end }}",
+            "{{ if gt .Behind 0 }}#ff7688{{ end }}"
+          ],
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            // "branch_max_length": 25,
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          },
+          "style": "powerline",
+          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ if .Working.Changed }}<cyan> \uf044 {{ .Working.String }}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}<yellow> \uf046 {{ .Staging.String }}</>{{ end }}{{ if gt .StashCount 0 }} |<green> \udb80\udd93 {{ .StashCount }}</>{{ end }} ",
+          "type": "git"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "background": "#242424",
+          "foreground": "#1BD760",
+          "leading_diamond": "<transparent,background>\ue0b0</>",
+          "powerline_symbol": "\ue0b0",
+          "style": "diamond",
+          "trailing_diamond": "\ue0b0",
+          "template": " {{ if .Env.SPOTIFY }}\uf1bc {{ .Env.SPOTIFY }}‎ {{ end }}"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "background": "#242424",
+          "foreground": "#007acc",
+          "leading_diamond": "\u256d\u2500\ue0b2",
+          "properties": {
+            "alpine": "\uf300",
+            "arch": "\uf303",
+            "centos": "\uf304",
+            "debian": "\uf306",
+            "elementary": "\uf309",
+            "fedora": "\uf30a",
+            "gentoo": "\uf30d",
+            "linux": "\ue712",
+            "macos": "\ue711",
+            "manjaro": "\uf312",
+            "mint": "\uf30f",
+            "opensuse": "\uf314",
+            "raspbian": "\uf315",
+            "ubuntu": "\uf31c",
+            "windows": "\ue70f"
+          },
+          "leading_diamond": "<transparent,background>\ue0b0</>",
+          "style": "diamond",
+          "trailing_diamond": "\ue0b0",
+          "template": " {{ if .WSL }}\ue712 on {{ end }}{{ .Icon }} ",
+          "type": "os"
+        },
+        {
+          "background": "#242424",
           "foreground": "#f1184c",
           "leading_diamond": "<transparent,background>\ue0b0</>",
           "powerline_symbol": "\ue0b0",
@@ -25,29 +144,10 @@
         },
         {
           "background": "#242424",
-          "foreground": "#33DD2D",
-          "foreground_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}#f77622{{ end }}",
-            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#e43b44{{ end }}",
-            "{{ if gt .Ahead 0 }}#2ce8f5{{ end }}",
-            "{{ if gt .Behind 0 }}#ff7688{{ end }}"
-          ],
-          "powerline_symbol": "\ue0b0",
-          "properties": {
-            "fetch_stash_count": true,
-            "fetch_status": true,
-            "fetch_upstream_icon": true
-          },
-          "style": "powerline",
-          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
-          "type": "git"
-        },
-        {
-          "background": "#242424",
-          "foreground": "#0080ff",
           "foreground_templates": [
             "{{ if gt .Code 0 }}#ff0044{{ end }}"
           ],
+          "foreground": "#0080ff",
           "leading_diamond": "<transparent,background>\ue0b0</>",
           "properties": {
             "always_enabled": true
@@ -61,7 +161,5 @@
       "type": "prompt"
     }
   ],
-  "console_title_template": "{{ .Folder }}",
-  "final_space": true,
   "version": 2
 }
