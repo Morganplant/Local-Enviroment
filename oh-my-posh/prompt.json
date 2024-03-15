@@ -43,15 +43,19 @@
           "powerline_symbol": "\ue0b0",
           "properties": {
             "folder_separator_icon": "/",
-            "style": "full"
+            "style": "full",
+            "mapped_locations": {
+              "C:\\Users\\morga\\Documents\\git": "\uf113",
+              "C:\\Users\\morga": "\ueb06"
+            }
           },
           "style": "powerline",
-          "template": "\ue5ff {{ .Env.MTP_PATH }}",
+          "template": "{{ .Path }}",
           "type": "path"
         },
         {
           "background": "#242424",
-          "foreground": "#33DD2D",
+          "foreground": "#6b80da",
           "foreground_templates": [
             "{{ if or (.Working.Changed) (.Staging.Changed) }}#f77622{{ end }}",
             "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#e43b44{{ end }}",
@@ -86,6 +90,21 @@
       "type": "prompt"
     },
     {
+      "alignment": "right",
+      "newline": false,
+      "segments": [
+        {
+          "type": "python",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "background": "#242424",
+          "foreground": "#906cff",
+          "template": " \ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ end }}{{ .Full }}{{ end }} "
+        }
+      ],
+      "type": "prompt"
+    },
+    {
       "alignment": "left",
       "newline": true,
       "segments": [
@@ -97,7 +116,7 @@
         }
       ],
       "type": "prompt"
-    }
+    }    
   ],
   "version": 2
 }
